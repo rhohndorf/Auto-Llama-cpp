@@ -1,13 +1,13 @@
 """Base class for memory providers."""
 import abc
 from config import AbstractSingleton
-import openai
-
+# import openai
+from llm_utils import llm
 
 def get_ada_embedding(text):
     text = text.replace("\n", " ")
-    return openai.Embedding.create(input=[text], model="text-embedding-ada-002")["data"][0]["embedding"]
-
+    # return openai.Embedding.create(input=[text], model="text-embedding-ada-002")["data"][0]["embedding"]
+    return llm.create_embedding(text)
 
 class MemoryProviderSingleton(AbstractSingleton):
     @abc.abstractmethod

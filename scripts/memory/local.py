@@ -6,7 +6,7 @@ import os
 from memory.base import MemoryProviderSingleton, get_ada_embedding
 
 
-EMBED_DIM = 1536
+EMBED_DIM = 5120#1536
 SAVE_OPTIONS = orjson.OPT_SERIALIZE_NUMPY | orjson.OPT_SERIALIZE_DATACLASS
 
 

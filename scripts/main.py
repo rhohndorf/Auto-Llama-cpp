@@ -29,15 +29,15 @@ def configure_logging():
                     level=logging.DEBUG)
     return logging.getLogger('AutoGPT')
 
-def check_openai_api_key():
-    """Check if the OpenAI API key is set in config.py or as an environment variable."""
-    if not cfg.openai_api_key:
-        print(
-            Fore.RED +
-            "Please set your OpenAI API key in config.py or as an environment variable."
-        )
-        print("You can get your key from https://beta.openai.com/account/api-keys")
-        exit(1)
+# def check_openai_api_key():
+#     """Check if the OpenAI API key is set in config.py or as an environment variable."""
+#     if not cfg.openai_api_key:
+#         print(
+#             Fore.RED +
+#             "Please set your OpenAI API key in config.py or as an environment variable."
+#         )
+#         print("You can get your key from https://beta.openai.com/account/api-keys")
+#         exit(1)
 
 def print_to_console(
         title,
@@ -75,6 +75,7 @@ def print_assistant_thoughts(assistant_reply):
     global cfg
     try:
         # Parse and print Assistant response
+        print("Assistent Reply", assistant_reply)
         assistant_reply_json = fix_and_parse_json(assistant_reply)
 
         # Check if assistant_reply_json is a string and attempt to parse it into a JSON object
@@ -304,7 +305,7 @@ def parse_arguments():
 
 
 # TODO: fill in llm values here
-check_openai_api_key()
+# check_openai_api_key()
 cfg = Config()
 logger = configure_logging()
 parse_arguments()
