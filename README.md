@@ -24,12 +24,14 @@ So far I have tried
 * LLama-13B-4BIT
 
 Overall the Vicuna model performed much better than the original LLama model in terms of answering in the required JSON format and how much sense the answers make. I just couldn't get it to stop starting every answer with ### ASSISTANT.
-I am very curous to hear how the GPTAll models perform. The 7B models seemed have problems with grasping what's asked of them in the prompt, but I tried very little in this direction since the inference speed didn't seem to be much faster for me.
+I am very curious to hear how well others models perform. The 7B models seemed have problems with grasping what's asked of them in the prompt, but I tried very little in this direction since the inference speed didn't seem to be much faster for me.
 
 ### Inference Speed
 The biggest problem at the moment is indeed inference speed. As the agent is self prompting a lot, a few seconds of infernce that are acceptable in a chatbot scenario become minutes and more. 
 Testing things like different prompts etc is a pain under these conditions. 
 
+## Discussion
+Fell free to add your thoughts and experiences in the [discussion](https://github.com/rhohndorf/Auto-Llama-cpp/discussions) area. What models did you try? How well did they work ou for you? 
 
 ## Future Plans
 ---
