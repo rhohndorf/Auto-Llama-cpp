@@ -7,8 +7,5 @@ llm = Llama(model_path="/home/ruben/Code/llama.cpp/models/13B/ggml-vicuna-13b-4b
 
 
 def create_chat_completion(messages, model=None, temperature=0.36, max_tokens=None)->str:
-    print("Message Content", messages[0]["content"])
-    response = llm(messages[0]["content"], stop=["Q:", "User:"], echo=False, temperature=temperature, max_tokens=max_tokens)
-
-    print("Response", response)
+    response = llm(messages[0]["content"], stop=["Q:", "### Human:"], echo=False, temperature=temperature, max_tokens=max_tokens)
     return response["choices"][0]["text"]
