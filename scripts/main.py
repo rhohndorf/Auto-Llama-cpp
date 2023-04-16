@@ -276,7 +276,7 @@ def parse_arguments():
     parser.add_argument('--continuous', action='store_true', help='Enable Continuous Mode')
     parser.add_argument('--speak', action='store_true', help='Enable Speak Mode')
     parser.add_argument('--debug', action='store_true', help='Enable Debug Mode')
-    parser.add_argument('--gpt3only', action='store_true', help='Enable GPT3.5 Only Mode')
+    parser.add_argument('--fast', action='store_true', help='Enable the fast LLM model')
     args = parser.parse_args()
 
     if args.continuous:
@@ -295,8 +295,8 @@ def parse_arguments():
         print_to_console("Debug Mode: ", Fore.GREEN, "ENABLED")
         cfg.set_debug_mode(True)
 
-    if args.gpt3only:
-        print_to_console("GPT3.5 Only Mode: ", Fore.GREEN, "ENABLED")
+    if args.fast:
+        print_to_console("Fast LLM: ", Fore.GREEN, "ENABLED")
         cfg.set_smart_llm_model(cfg.fast_llm_model)
 
     if args.debug:
@@ -333,7 +333,7 @@ while True:
             user_input,
             full_message_history,
             memory,
-            cfg.fast_token_limit) # TODO: This hardcodes the model to use GPT3.5. Make this an argument
+            cfg.fast_token_limit) # TODO: This hardcodes the model to use the fast llm. Make this an argument
 
     # Print Assistant thoughts
     print_assistant_thoughts(assistant_reply)
