@@ -5,7 +5,7 @@ from llm_utils import llm
 
 def get_ada_embedding(text):
     text = text.replace("\n", " ")
-    return llm.create_embedding(text)
+    return llm.embed(text)
 
 class MemoryProviderSingleton(AbstractSingleton):
     @abc.abstractmethod
