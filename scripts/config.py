@@ -1,6 +1,5 @@
 import abc
 import os
-import openai
 from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
@@ -65,7 +64,7 @@ class Config(metaclass=Singleton):
         self.wipe_redis_on_start = os.getenv("WIPE_REDIS_ON_START", "True") == 'True'
         self.memory_index = os.getenv("MEMORY_INDEX", 'auto-gpt')
         # Note that indexes must be created on db 0 in redis, this is not configureable.
-
+        self.model_path= os.getenv("MODEL_PATH")
         self.memory_backend = os.getenv("MEMORY_BACKEND", 'local')
 
     def set_continuous_mode(self, value: bool):
@@ -118,3 +117,7 @@ class Config(metaclass=Singleton):
     def set_debug_mode(self, value: bool):
         """Set the debug mode value."""
         self.debug = value
+
+    def set_model_path(self, value: str):
+        """Set the model_path value."""
+        self.model_path = value

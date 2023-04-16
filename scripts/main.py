@@ -218,7 +218,7 @@ def prompt_user():
     ai_name = ""
     # Construct the prompt
     print_to_console(
-        "Welcome to Auto-GPT! ",
+        "Welcome to Auto-Llama! ",
         Fore.GREEN,
         "Enter the name of your AI and its role below. Entering nothing will load defaults.",
         speak_text=True)
