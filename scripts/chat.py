@@ -19,22 +19,29 @@ def create_chat_message(role, content):
     """
     return {"role": role, "content": content}
 
-
 def generate_context(prompt, relevant_memory, full_message_history, model):
     current_context = [
+        create_chat_message("system", prompt),
         create_chat_message(
-            "system", prompt),
+            "system", f"The current time and date is {time.strftime('%c')}"
+        ),
         create_chat_message(
-            "system", f"The current time and date is {time.strftime('%c')}"),
-        create_chat_message(
-            "system", f"This reminds you of these events from your past:\n{relevant_memory}\n\n")]
+            "system",
+            f"This reminds you of these events from your past:\n{relevant_memory}\n\n",
+        ),
+    ]
 
     # Add messages from the full message history until we reach the token limit
     next_message_to_add_index = len(full_message_history) - 1
     insertion_index = len(current_context)
     # Count the currently used tokens
     current_tokens_used = token_counter.count_message_tokens(current_context, model)
-    return next_message_to_add_index, current_tokens_used, insertion_index, current_context
+    return (
+        next_message_to_add_index,
+        current_tokens_used,
+        insertion_index,
+        current_context,
+    )
 
 
 # TODO: Change debug from hardcode to argument
@@ -75,7 +82,7 @@ def chat_with_ai(
         next_message_to_add_index, current_tokens_used, insertion_index, current_context = generate_context(
             prompt, relevant_memory, full_message_history, model)
 
-        while current_tokens_used > 2500:
+        while current_tokens_used > token_limit:
             # remove memories until we are under 2500 tokens
             relevant_memory = relevant_memory[1:]
             next_message_to_add_index, current_tokens_used, insertion_index, current_context = generate_context(
@@ -84,7 +91,7 @@ def chat_with_ai(
         current_tokens_used += token_counter.count_message_tokens([create_chat_message("user", user_input)], model) # Account for user input (appended later)
 
         while next_message_to_add_index >= 0:
-            # print (f"CURRENT TOKENS USED: {current_tokens_used}")
+            print (f"CURRENT TOKENS USED: {current_tokens_used}")
             message_to_add = full_message_history[next_message_to_add_index]
 
             tokens_to_add = token_counter.count_message_tokens([message_to_add], model)

@@ -4,9 +4,10 @@ from typing import Any, List, Optional
 import numpy as np
 import os
 from memory.base import MemoryProviderSingleton, get_ada_embedding
+from config import Config
 
-
-EMBED_DIM = 5120#1536
+cfg = Config()
+EMBED_DIM = cfg.EMBED_DIM
 SAVE_OPTIONS = orjson.OPT_SERIALIZE_NUMPY | orjson.OPT_SERIALIZE_DATACLASS
 
 
