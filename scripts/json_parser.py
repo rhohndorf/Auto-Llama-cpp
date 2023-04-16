@@ -33,6 +33,7 @@ def fix_and_parse_json(
     """Fix and parse JSON string"""
     try:
         json_str = json_str.replace('\t', '')
+        json_str = json_str.replace('\\_', '_')
         return json.loads(json_str)
     except json.JSONDecodeError as _:  # noqa: F841
         json_str = correct_json(json_str)
