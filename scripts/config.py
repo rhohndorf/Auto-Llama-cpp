@@ -36,8 +36,8 @@ class Config(metaclass=Singleton):
         self.continuous_mode = False
         self.speak_mode = False
 
-        self.fast_llm_model = os.getenv("FAST_LLM_MODEL", "./models/7B/ggml-model.bin")
-        self.smart_llm_model = os.getenv("SMART_LLM_MODEL", "./models/13B/ggml-vicuna-13b-4bit.bin")
+        self.fast_llm_model = os.getenv("FAST_LLM_MODEL")
+        self.smart_llm_model = os.getenv("SMART_LLM_MODEL")
         self.fast_token_limit = int(os.getenv("FAST_TOKEN_LIMIT", 1500))
         self.smart_token_limit = int(os.getenv("SMART_TOKEN_LIMIT", 2000))
 
@@ -64,8 +64,9 @@ class Config(metaclass=Singleton):
         self.wipe_redis_on_start = os.getenv("WIPE_REDIS_ON_START", "True") == 'True'
         self.memory_index = os.getenv("MEMORY_INDEX", 'auto-gpt')
         # Note that indexes must be created on db 0 in redis, this is not configureable.
-
         self.memory_backend = os.getenv("MEMORY_BACKEND", 'local')
+
+        self.EMBED_DIM = int(os.getenv("EMBED_DIM"))
 
     def set_continuous_mode(self, value: bool):
         """Set the continuous mode value."""
