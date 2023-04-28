@@ -1,5 +1,6 @@
 import yaml
 import data
+from config import Config
 import os
 
 class AIConfig:
@@ -29,7 +30,10 @@ class AIConfig:
         self.ai_goals = ai_goals
 
     # Soon this will go in a folder where it remembers more stuff about the run(s)
-    SAVE_FILE = os.path.join(os.path.dirname(__file__), '..', 'ai_settings.yaml')
+    cfg = Config()
+    print(cfg.ai_settings_file)
+    SAVE_FILE = cfg.ai_settings_file
+    # SAVE_FILE = os.path.join(os.path.dirname(__file__), '..', 'ai_settings.yaml')
 
     @classmethod
     def load(cls: object, config_file: str=SAVE_FILE) -> object:
