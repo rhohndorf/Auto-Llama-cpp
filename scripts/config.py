@@ -68,8 +68,7 @@ class Config(metaclass=Singleton):
         self.memory_backend = os.getenv("MEMORY_BACKEND", 'local')
 
         self.EMBED_DIM = int(os.getenv("EMBED_DIM"))
-
-        self.n_ctx = int(os.getenv("N_CTX"))
+        
         self.temperature = float(os.getenv("TEMPERATURE"))
 
     def set_ai_settings_file(self, value: str):
@@ -77,9 +76,6 @@ class Config(metaclass=Singleton):
 
     def set_temperature(self, value: float):
         self.temperature = value
-
-    def set_n_ctx(self, value: float):
-        self.n_ctx = value
 
     def set_continuous_mode(self, value: bool):
         """Set the continuous mode value."""
