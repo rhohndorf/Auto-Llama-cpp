@@ -2,9 +2,9 @@ from config import Config
 from llama_cpp import Llama
 
 cfg = Config()
-llm = Llama(model_path=cfg.smart_llm_model, n_ctx=2048, embedding=True)
+llm = Llama(model_path=cfg.smart_llm_model, n_ctx=cfg.n_ctx, embedding=True)
 
-def create_chat_completion(messages, model=None, temperature=0.36, max_tokens=0)->str:
+def create_chat_completion(messages, model=None, temperature=cfg.temperature, max_tokens=0)->str:
     message = ""
     for i in messages:
         message += i.get("content")
