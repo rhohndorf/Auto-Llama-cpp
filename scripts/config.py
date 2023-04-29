@@ -36,6 +36,7 @@ class Config(metaclass=Singleton):
         self.continuous_mode = False
         self.speak_mode = False
 
+        self.ai_settings_file = os.getenv("AI_SETTINGS_FILE")
         self.fast_llm_model = os.getenv("FAST_LLM_MODEL")
         self.smart_llm_model = os.getenv("SMART_LLM_MODEL")
         self.fast_token_limit = int(os.getenv("FAST_TOKEN_LIMIT", 1500))
@@ -67,6 +68,14 @@ class Config(metaclass=Singleton):
         self.memory_backend = os.getenv("MEMORY_BACKEND", 'local')
 
         self.EMBED_DIM = int(os.getenv("EMBED_DIM"))
+        
+        self.temperature = float(os.getenv("TEMPERATURE"))
+
+    def set_ai_settings_file(self, value: str):
+        self.ai_settings_file = value
+
+    def set_temperature(self, value: float):
+        self.temperature = value
 
     def set_continuous_mode(self, value: bool):
         """Set the continuous mode value."""
