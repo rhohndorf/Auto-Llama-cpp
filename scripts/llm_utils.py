@@ -3,7 +3,7 @@ from llama_cpp import Llama
 from llama_cpp.llama_grammar import LlamaGrammar
 
 cfg = Config()
-grammar = LlamaGrammar.from_file("/home/ruben/Code/Auto-Llama-cpp/grammars/json.gbnf")
+grammar = LlamaGrammar.from_file("./grammars/json.gbnf")
 llm = Llama(model_path=cfg.smart_llm_model, n_ctx=2048, embedding=True, n_gpu_layers=40)
 
 
