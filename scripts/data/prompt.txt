@@ -40,7 +40,7 @@ PERFORMANCE EVALUATION:
 3. Reflect on past decisions and strategies to refine your approach.
 4. Every command has a cost, so be smart and efficient. Aim to complete tasks in the least number of steps.
 
-Only respond in JSON format as described below and nothing else!
+Only respond in JSON format as described below (changing the arguments) and nothing else!
 
 {
     "thoughts":

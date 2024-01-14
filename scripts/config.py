@@ -42,6 +42,8 @@ class Config(metaclass=Singleton):
         self.fast_token_limit = int(os.getenv("FAST_TOKEN_LIMIT", 1500))
         self.smart_token_limit = int(os.getenv("SMART_TOKEN_LIMIT", 2000))
 
+        self.gpu_layers = int(os.getenv("GPU_LAYERS"))
+
         self.elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY")
 
         self.use_mac_os_tts = False
