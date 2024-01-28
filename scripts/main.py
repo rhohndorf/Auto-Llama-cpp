@@ -75,7 +75,7 @@ def print_assistant_thoughts(assistant_reply):
     global cfg
     try:
         # Parse and print Assistant response
-        print("Assistent Reply", assistant_reply)
+        print("Assistant Reply", assistant_reply)
         assistant_reply_json = fix_and_parse_json(assistant_reply)
 
         # Check if assistant_reply_json is a string and attempt to parse it into a JSON object
@@ -298,10 +298,6 @@ def parse_arguments():
     if args.fast:
         print_to_console("Fast LLM: ", Fore.GREEN, "ENABLED")
         cfg.set_smart_llm_model(cfg.fast_llm_model)
-
-    if args.debug:
-        print_to_console("Debug Mode: ", Fore.GREEN, "ENABLED")
-        cfg.set_debug_mode(True)
 
 
 # TODO: fill in llm values here

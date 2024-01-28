@@ -10,7 +10,7 @@ from file_operations import read_file, write_to_file, append_to_file, delete_fil
 from execute_code import execute_python_file
 from json_parser import fix_and_parse_json
 from image_gen import generate_image
-from duckduckgo_search import ddg
+from duckduckgo_search import DDGS
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
@@ -125,8 +125,9 @@ def get_datetime():
 def google_search(query, num_results=8):
     """Return the results of a google search"""
     search_results = []
-    for j in ddg(query, max_results=num_results):
-        search_results.append(j)
+    with DDGS() as ddgs:
+        for j in ddgs(query, max_results=num_results):
+            search_results.append(j)
 
     return json.dumps(search_results, ensure_ascii=False, indent=4)
 
